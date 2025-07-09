@@ -1,0 +1,20 @@
+type: edu
+files:
+  - name: src/metro/Main.java
+    visible: true
+    learner_created: false
+  - name: test/baltimore.json
+    visible: false
+    learner_created: false
+  - name: test/lausanne.json
+    visible: false
+    learner_created: false
+  - name: test/prague.json
+    visible: false
+    learner_created: false
+  - name: test/Tests.java
+    visible: false
+    learner_created: false
+feedback_link: https://hyperskill.org/projects/120/stages/651/implement#comment
+status: Unchecked
+record: -1
