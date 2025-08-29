@@ -8,3 +8,10 @@ course-remote-info.yaml
 gradlew
 gradlew.bat
 settings.gradle
+HyperMetro/'A real metro'/*
+HyperMetro/Branching/*
+HyperMetro/'One-line metro'/*
+HyperMetro/'Several directions'/*
+HyperMetro/'The fastest route'/*
+HyperMetro/'The shortest route'/*
+HyperMetro/lesson-info.yaml
