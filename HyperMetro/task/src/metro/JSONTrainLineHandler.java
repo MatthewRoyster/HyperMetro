@@ -3,10 +3,9 @@ package metro;
 import java.io.BufferedReader;
 
 public class JSONTrainLineHandler {
-    BufferedReader reader;
 
-    public JSONTrainLineHandler(BufferedReader r){
-        this.reader = r;
+    public static void processJSONFile(BufferedReader r, SubwayMap m){
+
     }
 
     /*TODO The buffered reader should represent a JSON text file

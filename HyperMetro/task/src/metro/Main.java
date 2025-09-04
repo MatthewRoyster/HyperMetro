@@ -6,9 +6,11 @@ import metro.StationLinkedList.StationLinkedList1;
 import java.io.*;
 import java.util.Arrays;
 
+import static metro.JSONTrainLineHandler.processJSONFile;
+
 public class Main {
     public static void main(String[] args) {
-        StationLinkedList metro = new StationLinkedList1();
+        SubwayMap metro = new SubwayMap();
 
         //Test to see if the file input was correct
         //System.out.println(Arrays.toString(args));
@@ -19,22 +21,14 @@ public class Main {
             File file = new File(args[0]);
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
-            while(reader.ready()){
-                metro.add(reader.readLine());
-            }
+            processJSONFile(reader, metro);
+
+
         }catch (FileNotFoundException e){
             System.out.println("Error! Such a file doesn't exist!");
         }catch(IOException e){
             System.out.println("Error! Something went wrong with the file!");
         }
 
-        //Test to validate the list was generated correctly
-        //System.out.println(metro.toString());
-
-        int numberOfStations = metro.getNumberOfStations();
-        for(int i = 0; i < numberOfStations; i++){
-            System.out.println(metro.getPriorStation() + " - " + metro.getCurrentStation() +" - " + metro.getNextStation());
-            metro.advanceTraversal();
-        }
     }
 }
