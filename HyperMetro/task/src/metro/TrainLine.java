@@ -24,4 +24,8 @@ public class TrainLine {
         return this.lineName;
     }
 
+    public void addStation(String s, int i){
+        this.stations.add(s, i);
+    }
+
 }

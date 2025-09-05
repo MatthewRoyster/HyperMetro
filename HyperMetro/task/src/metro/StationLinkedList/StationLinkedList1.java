@@ -48,7 +48,7 @@ public class StationLinkedList1 implements StationLinkedList{
     }
 
     public void add(String station, int index){
-        this.stations.add(index+1, station);
+        this.stations.add(index, station);
     }
 
     public void removeStation(int index){
