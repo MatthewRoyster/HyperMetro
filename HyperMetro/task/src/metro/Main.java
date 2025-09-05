@@ -1,10 +1,6 @@
 package metro;
 
-import metro.StationLinkedList.StationLinkedList;
-import metro.StationLinkedList.StationLinkedList1;
-
 import java.io.*;
-import java.util.Arrays;
 
 import static metro.JSONTrainLineHandler.processJSONFile;
 
@@ -23,12 +19,8 @@ public class Main {
 
             processJSONFile(reader, metro);
 
-
         }catch (FileNotFoundException e){
             System.out.println("Error! Such a file doesn't exist!");
-        }catch(IOException e){
-            System.out.println("Error! Something went wrong with the file!");
         }
-
     }
 }
