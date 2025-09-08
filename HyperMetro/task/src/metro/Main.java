@@ -61,4 +61,28 @@ public class Main {
         }
 
     }
+
+    //Process input options to separate out train line and station name
+    private String[] processOptions(String str){
+        String[] options = new String[2];
+
+        //Process and get line name
+        if(str.charAt(0) == '"'){
+            str = str.substring(1);
+            options[0] = str.substring(0, str.charAt('"'));
+        }else{
+            options[0] = str.substring(0, str.charAt(' '));
+        }
+
+        //Remove the line name from the input
+        str = str.substring(options[0].length());
+
+        //Process and get station name
+        if(str.charAt(0) == '"'){
+            
+        }else{
+
+        }
+        return options;
+    }
 }
