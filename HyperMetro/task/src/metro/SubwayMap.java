@@ -5,10 +5,10 @@ import java.util.List;
 
 public class SubwayMap {
 
-    private List<TrainLine> lines;
+    private final List<TrainLine> lines;
 
     public SubwayMap(){
-        this.lines = new ArrayList<TrainLine>();
+        this.lines = new ArrayList<>();
     }
 
     public void addLine(String name){

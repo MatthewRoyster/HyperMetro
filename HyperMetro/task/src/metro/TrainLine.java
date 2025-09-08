@@ -24,4 +24,8 @@ public class TrainLine {
         return this.lineName;
     }
 
+    public void printTrainLine(){
+        System.out.println(this.stations.toString());
+    }
+
 }

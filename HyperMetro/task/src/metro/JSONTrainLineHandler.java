@@ -17,9 +17,6 @@ public class JSONTrainLineHandler {
                 lineName = lineName.substring(1, lineName.length()-1);
                 lineName = lineName.substring(0, lineName.indexOf('"'));
 
-                //Print to verify correct during testing, TODO remove print line
-                System.out.println(lineName);
-
                 //Add to the map and then get line to prepare to add stations
                 m.addLine(lineName);
                 TrainLine line = m.getLine(lineName);
@@ -40,14 +37,9 @@ public class JSONTrainLineHandler {
                 }
             }
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.out.println("Incorrect file");
         }
     }
-
-    /*TODO The buffered reader should represent a JSON text file
-    the goal will be to read the file and generate the appropriate
-    lines and stations based on a format.
-     */
 
 }
