@@ -28,5 +28,4 @@ public class TrainLine {
     public void addStation(String s, int i){
         this.stations.add(s, i);
     }
-
 }

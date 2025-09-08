@@ -85,4 +85,5 @@ public class StationLinkedList1 implements StationLinkedList{
     public void recallTraversal(){
         this.traversalCounter--;
     }
+
 }

@@ -3,6 +3,7 @@ package metro;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
+import metro.StationLinkedList.StationLinkedList;
 
 import static metro.JSONTrainLineHandler.processJSONFile;
 
@@ -40,7 +41,14 @@ public class Main {
                 } else if (userInput.equals("/remove")) {
 
                 } else if (userInput.equals("/output")) {
+                    //Check to see if the input is a multi word option
+                    //If it is strip the quotes off before calling output
+                    if(userOptions.contains("\"")){
+                        userOptions = userOptions.substring(1, userOptions.length()-1);
+                    }
+
                     metro.getLine(userOptions).printTrainLine();
+
                 } else if(!userInput.equals("/exit")) {
                     System.out.println("Invalid command");
                 }
