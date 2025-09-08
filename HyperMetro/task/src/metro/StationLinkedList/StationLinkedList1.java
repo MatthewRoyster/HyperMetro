@@ -6,12 +6,12 @@ import java.util.List;
 public class StationLinkedList1 implements StationLinkedList{
 
 
-    private List<String> stations;
+    private final List<String> stations;
 
     private int traversalCounter = 1;
 
     public StationLinkedList1() {
-        this.stations = new ArrayList<String>();
+        this.stations = new ArrayList<>();
         this.stations.add("depot");
         this.stations.add("depot");
     }
@@ -48,7 +48,7 @@ public class StationLinkedList1 implements StationLinkedList{
     }
 
     public void add(String station, int index){
-        this.stations.add(index+1, station);
+        this.stations.add(index, station);
     }
 
     public void removeStation(int index){

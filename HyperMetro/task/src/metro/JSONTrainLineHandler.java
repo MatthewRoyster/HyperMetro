@@ -9,10 +9,11 @@ public class JSONTrainLineHandler {
         try {
             //Read initial open bracket
             r.readLine();
+            //Read the first line name
+            String lineName = r.readLine();
 
-            while(!r.ready()){
+            while(r.ready()){
                 //Get line and then process to get just the name of the line
-                String lineName = r.readLine();
                 lineName = lineName.trim();
                 lineName = lineName.substring(1, lineName.length()-1);
                 lineName = lineName.substring(0, lineName.indexOf('"'));
@@ -28,13 +29,31 @@ public class JSONTrainLineHandler {
                     //We can trim the first one down and then remove quotes
                     //The second may have spaces in the name so we can remove just the punctuation
                     String[] currentStation = station.split(":");
+                    //System.out.println(Arrays.toString(currentStation));
 
-                    String stationNumber = currentStation[0].substring(1, currentStation[0].length()-2);
-                    String stationName = currentStation[1].substring(1, currentStation[1].length()-1);
+                    //Get the string down to just the number
+                    String stationNumber = currentStation[0].trim();
+                    stationNumber = stationNumber.substring(1, stationNumber.length()-1);
+
+                    //There may be a comma at the end so we will pull the whole substring and then remove based on
+                    //location of the ending quotation mark. The first substring will remove the starting one
+                    String stationName = currentStation[1];
+                    stationName = stationName.substring(stationName.indexOf('"')+1);
+                    //System.out.println(stationName);
+                    stationName = stationName.substring(0, stationName.indexOf('"'));
+                    //System.out.println(stationName);
 
 
+                    //Add the station name and number to the train line
+                    line.addStation(stationName, Integer.parseInt(stationNumber));
+
+                    //Read next line, if the next line contains a curly brace then done with this line
+                    //otherwise repeat and process that station
                     station = r.readLine();
                 }
+
+                //Read either the final brace or next line name
+                lineName = r.readLine();
             }
 
         } catch (Exception e) {

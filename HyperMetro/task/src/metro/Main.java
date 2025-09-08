@@ -1,8 +1,5 @@
 package metro;
 
-import metro.StationLinkedList.StationLinkedList;
-import metro.StationLinkedList.StationLinkedList1;
-
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
