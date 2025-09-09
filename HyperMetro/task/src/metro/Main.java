@@ -35,19 +35,30 @@ public class Main {
 
             try {
                 if (userInput.equals("/append")) {
-
+                    String[] options = processOptions(userOptions);
+                    metro.getLine(options[0]).addStation(options[1]);
                 } else if (userInput.equals("/add-head")) {
-
+                    String[] options = processOptions(userOptions);
+                    metro.getLine(options[0]).addStation(options[1], 1);
                 } else if (userInput.equals("/remove")) {
-
+                    String[] options = processOptions(userOptions);
+                    metro.getLine(options[0]).removeStation(options[1]);
                 } else if (userInput.equals("/output")) {
+
                     //Check to see if the input is a multi word option
                     //If it is strip the quotes off before calling output
                     if(userOptions.contains("\"")){
                         userOptions = userOptions.substring(1, userOptions.length()-1);
                     }
 
-                    metro.getLine(userOptions).printTrainLine();
+                    StationLinkedList tl = metro.getLine(userOptions).getStations();
+                    int numberOfStations = tl.getNumberOfStations();
+
+                    for(int i = 0; i < numberOfStations; i++){
+                        System.out.println(tl.getPriorStation() + " - " + tl.getCurrentStation() + " - " + tl.getNextStation());
+                        tl.advanceTraversal();
+                    }
+                    tl.restartTraversal();
 
                 } else if(!userInput.equals("/exit")) {
                     System.out.println("Invalid command");
@@ -63,26 +74,43 @@ public class Main {
     }
 
     //Process input options to separate out train line and station name
-    private String[] processOptions(String str){
+    private static String[] processOptions(String str){
         String[] options = new String[2];
 
+        //System.out.println(str);
         //Process and get line name
         if(str.charAt(0) == '"'){
             str = str.substring(1);
-            options[0] = str.substring(0, str.charAt('"'));
+            options[0] = str.substring(0, str.indexOf('"'));
+            str = str.substring(options[0].length()+2);
         }else{
-            options[0] = str.substring(0, str.charAt(' '));
+            options[0] = str.substring(0, str.indexOf(' '));
+            str = str.substring(options[0].length()+1);
         }
+        //System.out.println(str);
 
-        //Remove the line name from the input
-        str = str.substring(options[0].length());
 
         //Process and get station name
         if(str.charAt(0) == '"'){
-            
+            str = str.substring(1);
+            options[1] = str.substring(0, str.indexOf('"'));
         }else{
-
+            options[1] = str;
         }
+
+        //System.out.println(Arrays.toString(options));
         return options;
+
+        /*
+        example 1 of string breakdown
+        "moose" "moose" *option with both being quotes
+        moose" "moose" * remove first quote
+        "moose" * remove length and the end quote and space
+        moose" * remove quote and get till next quote
+
+        example 2 with no quotes
+        moose moose * go straight to extracting string
+        moose * remove word and the space
+         */
     }
 }

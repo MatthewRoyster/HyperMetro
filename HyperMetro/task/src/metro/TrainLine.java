@@ -28,4 +28,8 @@ public class TrainLine {
     public void addStation(String s, int i){
         this.stations.add(s, i);
     }
+
+    public void addStation(String s){this.stations.add(s);}
+
+    public void removeStation(String s){this.stations.removeStation(s);}
 }
